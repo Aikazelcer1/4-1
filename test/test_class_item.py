@@ -59,7 +59,7 @@ def test_exception_long_name(item):
 
 def test_instantiate_from_csv():
 
-    Item.instantiate_from_csv(path=os.path.join('tests', 'test.csv'))
+    Item.instantiate_from_csv(path=os.path.join('test', 'test.csv'))
     item_1 = Item.all[0]
     item_2 = Item.all[1]
     item_3 = Item.all[2]
@@ -80,7 +80,7 @@ def test_exception_file_not_found():
 
     s = io.StringIO()
     with contextlib.redirect_stdout(s):
-        Item.instantiate_from_csv(path=os.path.join('tests', 'file.csv'))
+        Item.instantiate_from_csv(path=os.path.join('test', 'file.csv'))
     assert s.getvalue() == 'FileNotFoundError: Отсутствует файл tests\\file.csv\n'
 
 
@@ -88,7 +88,7 @@ def test_exception_file_damaged_1():
 
     s = io.StringIO()
     with contextlib.redirect_stdout(s):
-        Item.instantiate_from_csv(path=os.path.join('tests', 'bad_file_1.csv'))
+        Item.instantiate_from_csv(path=os.path.join('test', 'bad_file_1.csv'))
     assert s.getvalue() == 'InstantiateCSVError: Файл item.csv поврежден\n'
 
 
@@ -96,7 +96,7 @@ def test_exception_file_damaged_2():
 
     s = io.StringIO()
     with contextlib.redirect_stdout(s):
-        Item.instantiate_from_csv(path=os.path.join('tests', 'bad_file_2.csv'))
+        Item.instantiate_from_csv(path=os.path.join('test', 'bad_file_2.csv'))
     assert s.getvalue() == 'InstantiateCSVError: Файл item.csv поврежден\n'
 
 
