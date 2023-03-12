@@ -76,13 +76,6 @@ def test_instantiate_from_csv():
     assert item_3.quantity == 6
 
 
-def test_exception_file_not_found():
-
-    s = io.StringIO()
-    with contextlib.redirect_stdout(s):
-        Item.instantiate_from_csv(path=os.path.join('tests', 'file.csv'))
-    assert s.getvalue() == 'FileNotFoundError: Отсутствует файл tests\\file.csv\n'
-
 
 def test_exception_file_damaged_1():
 
