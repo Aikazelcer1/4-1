@@ -108,3 +108,9 @@ def test_add_exception(item):
 
     with pytest.raises(TypeError):
         result = item + 10
+
+def test_exception_file_not_found():
+    s = io.StringIO()
+    with contextlib.redirect_stdout(s):
+        Item.instantiate_from_csv(path=os.path.join('tests', 'file.csv'))
+    assert s.getvalue() == f'FileNotFoundError: Отсутствует файл {os.path.join("tests", "file.csv")}\n'
